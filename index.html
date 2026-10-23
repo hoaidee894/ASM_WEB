@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Station - Assignment Website</title>
+    <!-- Nhúng file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- KHU VỰC MENU ĐIỀU HƯỚNG -->
+
+<nav class="nav">
+    <input type="checkbox" id="menu-check">
+
+    <label for="menu-check" class="nav__logo">=</label>
+
+    <ul class="nav__list">
+        <li class="nav__item"><a href="#features" class="nav__link">Features</a></li>
+        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="#product" class="nav__link">Products</a></li>
+        <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+        <li class="nav__item"><a href="contact.html" class="nav__link">Contacts</a></li>
+    </ul>
+</nav>
+    <!-- KHU VỰC BANNER - SLIDESHOW -->
+    <header class="header slideshow" id="home">
+
+        <!-- Các slide -->
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./images/about-bcg.jpeg');">
+            <div class="header-content">
+                <h2>Over One Hundred Flavors</h2>
+                <h1>Specially Crafted Tea</h1>
+                <a href="#about" class="btn header__btn">Explore</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./images/product-1.jpeg');">
+            <div class="header-content">
+                <h2>Rich &amp; Bold Taste</h2>
+                <h1>Black Long Tea</h1>
+                <a href="#product" class="btn header__btn">Shop Now</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./images/product-2.jpeg');">
+            <div class="header-content">
+                <h2>Light &amp; Floral Aroma</h2>
+                <h1>Green Tea with Jasmine</h1>
+                <a href="#product" class="btn header__btn">Shop Now</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./images/service-1.jpeg');">
+            <div class="header-content">
+                <h2>Tailored Just For You</h2>
+                <h1>Custom Recipe Service</h1>
+                <a href="#services" class="btn header__btn">Our Services</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./images/service-2.jpeg');">
+            <div class="header-content">
+                <h2>Fresh to Your Doorstep</h2>
+                <h1>Home Delivery</h1>
+                <a href="#services" class="btn header__btn">Learn More</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./images/service-3.jpeg');">
+            <div class="header-content">
+                <h2>The Art of Patience</h2>
+                <h1>Tea Aging Service</h1>
+                <a href="#services" class="btn header__btn">Discover</a>
+            </div>
+        </div>
+
+        <!-- Nút điều hướng trái / phải -->
+        <button class="slide-btn slide-btn--prev" id="slidePrev" aria-label="Previous slide">&#10094;</button>
+        <button class="slide-btn slide-btn--next" id="slideNext" aria-label="Next slide">&#10095;</button>
+
+        <!-- Dots điều hướng -->
+        <div class="slide-dots" id="slideDots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
+            <span class="dot" data-index="5"></span>
+        </div>
+
+        <!-- Thanh tiến trình -->
+        <div class="slide-progress-bar"><div class="slide-progress" id="slideProgress"></div></div>
+
+    </header>
+
+
+
+    <!-- KHU VỰC TÍNH NĂNG (Dùng Flexbox - Y3) -->
+    <section id="features" class="section-padding">
+        <div class="feature_item">
+            <h4 class="feature__title">Made with love</h4>
+            <p class="feature__text">Our tea is made with love, from the collection of the leaves to the brewing.</p>
+        </div>
+        <div class="feature_item">
+            <h4 class="feature__title">Relaxation</h4>
+            <p class="feature__text">Set aside anxiety and relax after a hard day with a cup of hot tea in your hands.
+            </p>
+        </div>
+        <div class="feature_item">
+            <h4 class="feature__title">Energy</h4>
+            <p class="feature__text">Our tea will energize you with vitamins and invigorate the rest of the day.</p>
+        </div>
+        <div class="feature_item">
+            <h4 class="feature__title">Family recipe</h4>
+            <p class="feature__text">All our recipes are passed down from generation to generation for a long time.</p>
+        </div>
+    </section>
+
+    <!-- KHU VỰC GIỚI THIỆU -->
+    <section id="about" class="section-padding">
+        <div class="about_left">
+            <img src="./images/about-bcg.jpeg" alt="Về Tea Station">
+        </div>
+        <div class="about_right">
+            <h3 class="heading_first">About Our</h3>
+            <h2 class="heading_second">TEA STATION</h2>
+            <p class="about__text">Once upon a time we only had a couple of teapots and enjoyed tea only with our
+                family. Over time, we were able to afford to buy a small tea plantation.</p>
+            <p class="about__text">Now we have a whole teahouse and we delight many people with delicious and hot tea.
+                We serve black long tea, relaxing green and jasmine tea, tea with spices and many others.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- KHU VỰC SẢN PHẨM -->
+    <section id="product" class="section-padding">
+        <div class="product_item product-intro">
+            <h3 class="heading_first">Check Out</h3>
+            <h2 class="heading_second heading_second--white">Our products</h2>
+            <p class="products__text">Our assortment includes long tea, relaxing and invigorating green tea with spices,
+                lemon juice, jasmine, cinnamon and anise, milk tea and many others.</p>
+            <a href="#" class="btn">Inventory</a>
+        </div>
+        <div class="product_item product-card">
+            <img class="product__img" src="./images/product-1.jpeg" alt="Trà đen">
+            <h5 class="product-item__title">Black long tea</h5>
+            <p class="product-item__price"><span>$</span> 3.99</p>
+            <a href="product-black-tea.html" class="btn card-btn">Buy Now</a>
+        </div>
+        <div class="product_item product-card">
+            <img class="product__img" src="./images/product-2.jpeg" alt="Trà hoa nhài">
+            <h5 class="product-item__title">Green tea with jasmine</h5>
+            <p class="product-item__price"><span>$</span> 4.99</p>
+            <a href="product-jasmine-tea.html" class="btn card-btn">Buy Now</a>
+        </div>
+    </section>
+
+    <!-- KHU VỰC DỊCH VỤ -->
+    <section class="services-section section-padding" id="services">
+        <div class="services-header">
+            <h3 class="heading_first">Explore</h3>
+            <h2 class="heading_second">OUR SERVICES</h2>
+        </div>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-img-container">
+                    <img src="./images/service-1.jpeg" alt="Dịch vụ 1" class="service-img">
+                </div>
+                <div class="service-info">
+                    <h4 class="service-name">Custom Recipe Service</h4>
+                    <a href="#" class="btn-read-more">Read More</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img-container">
+                    <img src="./images/service-2.jpeg" alt="Dịch vụ 2" class="service-img">
+                </div>
+                <div class="service-info">
+                    <h4 class="service-name">Home Delivery Service</h4>
+                    <a href="#" class="btn-read-more">Read More</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img-container">
+                    <img src="./images/service-3.jpeg" alt="Dịch vụ 3" class="service-img">
+                </div>
+                <div class="service-info">
+                    <h4 class="service-name">Tea Aging Service</h4>
+                    <a href="#" class="btn-read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KHU VỰC LIÊN HỆ & BẢN ĐỒ (Nhúng Map - Y4) -->
+    <section class="contact section-padding" id="contact">
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3 class="heading_first">address</h3>
+                <p class="contact-info-text">
+                    523 N Fairfax Ave <br />
+                    Los Angeles, CA 90048
+                </p>
+            </div>
+            <div class="contact-item">
+                <h3 class="heading_first">email</h3>
+                <p class="contact-info-text">contact@teastation.com</p>
+            </div>
+            <div class="contact-item">
+                <h3 class="heading_first">telephone</h3>
+                <p class="contact-info-text">+ 123 456 789</p>
+            </div>
+            <!-- Nhúng Google Maps -->
+            <div class="map-container" style="margin-top: 3rem;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.5363402773236!2d-118.36398328478442!3d34.081308380598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2beb9c381c15f%3A0xc3f1f70d5e236316!2s523%20N%20Fairfax%20Ave%2C%20Los%20Angeles%2C%20CA%2090036%2C%20USA!5e0!3m2!1sen!2s!4v1634567890123!5m2!1sen!2s"
+                    width="100%" height="250" style="border:0; border-radius: 10px;" allowfullscreen=""
+                    loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- Form nhập liệu -->
+        <div class="contact-form">
+            <h3 class="heading_first">contact us</h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="name" class="form-control" name="name" required />
+                    <input type="email" placeholder="email" class="form-control" name="email" required />
+                    <textarea name="message" placeholder="message" class="form-control" rows="8" required></textarea>
+                </div>
+                <button type="submit" class="btn submit-btn">submit here</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CHÂN TRANG (FOOTER) -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 class="heading_first" style="font-size: 2.5rem; margin-bottom: 10px;">Tea Station</h3>
+                <p class="footer-text">Trải nghiệm những hương vị trà tinh tế nhất được chọn lọc kỹ càng từ các nông
+                    trại trứ danh, mang đến cho bạn cảm giác thư giãn tuyệt đối.</p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading">Khám Phá</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#about">Về Chúng Tôi</a></li>
+                    <li><a href="#product">Sản Phẩm</a></li>
+                    <li><a href="#services">Dịch Vụ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading">Giờ Mở Cửa</h4>
+                <p class="footer-text">Thứ 2 - Thứ 6: 08:00 - 22:00</p>
+                <p class="footer-text">Thứ 7 - CN: 09:00 - 23:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tea Station. Bài tập Xây dựng trang web FPT Polytechnic.</p>
+        </div>
+    </footer>
+
+<!-- ===== MODAL: BLACK LONG TEA ===== -->
+<div class="modal-overlay" id="modal-black-tea" onclick="closeModalOnOverlay(event, 'modal-black-tea')">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-black-tea')">&times;</button>
+        <div class="modal-content">
+            <div class="modal-img-wrap">
+                <img src="./images/product-1.jpeg" alt="Black Long Tea" class="modal-img">
+                <span class="modal-badge">Best Seller</span>
+            </div>
+            <div class="modal-info">
+                <h3 class="modal-heading-sub">Premium Collection</h3>
+                <h2 class="modal-title">Black Long Tea</h2>
+                <p class="modal-price"><span>$</span> 3.99 <small>/ 100g</small></p>
+                <div class="modal-divider"></div>
+                <p class="modal-desc">A bold and rich black tea sourced from the highland tea gardens of Sri Lanka. Brewed to perfection, it offers a deep amber color with a smooth, malty finish and a subtle hint of earthy sweetness.</p>
+                <div class="modal-tags">
+                    <div class="modal-tag">
+                        <span class="tag-icon">🌿</span>
+                        <div>
+                            <strong>Origin</strong>
+                            <span>Sri Lanka</span>
+                        </div>
+                    </div>
+                    <div class="modal-tag">
+                        <span class="tag-icon">☕</span>
+                        <div>
+                            <strong>Flavor Notes</strong>
+                            <span>Malty, Earthy, Smooth</span>
+                        </div>
+                    </div>
+                    <div class="modal-tag">
+                        <span class="tag-icon">⏱</span>
+                        <div>
+                            <strong>Brew Time</strong>
+                            <span>3 – 5 minutes</span>
+                        </div>
+                    </div>
+                    <div class="modal-tag">
+                        <span class="tag-icon">🌡</span>
+                        <div>
+                            <strong>Temperature</strong>
+                            <span>95°C – 100°C</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-weight">
+                    <span>Weight:</span>
+                    <button class="weight-btn active">100g</button>
+                    <button class="weight-btn">250g</button>
+                    <button class="weight-btn">500g</button>
+                </div>
+                <a href="#" class="btn modal-buy-btn">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MODAL: GREEN TEA WITH JASMINE ===== -->
+<div class="modal-overlay" id="modal-jasmine-tea" onclick="closeModalOnOverlay(event, 'modal-jasmine-tea')">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-jasmine-tea')">&times;</button>
+        <div class="modal-content">
+            <div class="modal-img-wrap">
+                <img src="./images/product-2.jpeg" alt="Green Tea with Jasmine" class="modal-img">
+                <span class="modal-badge" style="background:#4caf50;">Organic</span>
+            </div>
+            <div class="modal-info">
+                <h3 class="modal-heading-sub">Floral Harmony</h3>
+                <h2 class="modal-title">Green Tea with Jasmine</h2>
+                <p class="modal-price"><span>$</span> 4.99 <small>/ 100g</small></p>
+                <div class="modal-divider"></div>
+                <p class="modal-desc">Delicately scented with fresh jasmine blossoms, this premium green tea from the Fujian province of China delivers a light, floral aroma with a gentle sweetness and a refreshing, clean finish that soothes the senses.</p>
+                <div class="modal-tags">
+                    <div class="modal-tag">
+                        <span class="tag-icon">🌿</span>
+                        <div>
+                            <strong>Origin</strong>
+                            <span>Fujian, China</span>
+                        </div>
+                    </div>
+                    <div class="modal-tag">
+                        <span class="tag-icon">🌸</span>
+                        <div>
+                            <strong>Flavor Notes</strong>
+                            <span>Floral, Sweet, Fresh</span>
+                        </div>
+                    </div>
+                    <div class="modal-tag">
+                        <span class="tag-icon">⏱</span>
+                        <div>
+                            <strong>Brew Time</strong>
+                            <span>2 – 3 minutes</span>
+                        </div>
+                    </div>
+                    <div class="modal-tag">
+                        <span class="tag-icon">🌡</span>
+                        <div>
+                            <strong>Temperature</strong>
+                            <span>70°C – 80°C</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-weight">
+                    <span>Weight:</span>
+                    <button class="weight-btn active">100g</button>
+                    <button class="weight-btn">250g</button>
+                    <button class="weight-btn">500g</button>
+                </div>
+                <a href="#" class="btn modal-buy-btn">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* ===== SLIDESHOW AUTO-PLAY ===== */
+    (function () {
+        var slides = document.querySelectorAll('.slide');
+        var dots   = document.querySelectorAll('.dot');
+        var progressEl = document.getElementById('slideProgress');
+        var current = 0;
+        var DURATION = 4000;
+        var timer;
+
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+            resetBar();
+        }
+
+        function resetBar() {
+            progressEl.style.transition = 'none';
+            progressEl.style.width = '0%';
+            progressEl.getBoundingClientRect(); /* force reflow */
+            progressEl.style.transition = 'width ' + DURATION + 'ms linear';
+            progressEl.style.width = '100%';
+        }
+
+        function startAuto() {
+            clearInterval(timer);
+            timer = setInterval(function () { goTo(current + 1); }, DURATION);
+            resetBar();
+        }
+
+        document.getElementById('slideNext').addEventListener('click', function () {
+            goTo(current + 1); clearInterval(timer); startAuto();
+        });
+        document.getElementById('slidePrev').addEventListener('click', function () {
+            goTo(current - 1); clearInterval(timer); startAuto();
+        });
+        dots.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+                goTo(parseInt(dot.dataset.index));
+                clearInterval(timer); startAuto();
+            });
+        });
+
+        /* Swipe support on mobile */
+        var touchX = 0;
+        var ss = document.querySelector('.slideshow');
+        ss.addEventListener('touchstart', function (e) { touchX = e.changedTouches[0].screenX; }, { passive: true });
+        ss.addEventListener('touchend', function (e) {
+            var diff = touchX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) { goTo(current + (diff > 0 ? 1 : -1)); clearInterval(timer); startAuto(); }
+        }, { passive: true });
+
+        startAuto(); /* <-- khởi động tự động ngay lập tức */
+    }());
+
+    /* ===== MODAL ===== */
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    function closeModalOnOverlay(e, id) {
+        if (e.target === e.currentTarget) closeModal(id);
+    }
+    document.querySelectorAll('.modal-weight').forEach(function (group) {
+        group.querySelectorAll('.weight-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                group.querySelectorAll('.weight-btn').forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+            });
+        });
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.active').forEach(function (m) {
+                m.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+    });
+</script>
+
+</body>
+
+</html>
