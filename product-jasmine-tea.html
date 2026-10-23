@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Tea with Jasmine - Tea Station</title>
+    <meta name="description" content="Premium Green Tea with Jasmine from Fujian, China. Light, floral aroma with a gentle sweetness.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== PRODUCT DETAIL PAGE STYLES ===== */
+        body {
+            background-color: #f1f5f8;
+        }
+
+        .detail-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: #fff;
+            padding: 1.5rem 6rem;
+            font-size: 1.5rem;
+            color: #888;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .breadcrumb a {
+            color: #698f3f;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #4b6630;
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.8rem;
+        }
+
+        /* Product Detail Container */
+        .product-detail {
+            max-width: 1100px;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            display: flex;
+            overflow: hidden;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Image Side */
+        .detail-img-wrap {
+            width: 48%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .detail-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .detail-badge {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: #4caf50;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+        }
+
+        /* Info Side */
+        .detail-info {
+            width: 52%;
+            padding: 5rem 4.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .detail-heading-sub {
+            font-family: "Grand Hotel", cursive;
+            font-size: 2.4rem;
+            color: #698f3f;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #3a3e3b;
+            letter-spacing: 0.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .detail-price {
+            font-family: "Grand Hotel", cursive;
+            font-size: 3.5rem;
+            color: #698f3f;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-price span {
+            font-size: 2.6rem;
+            margin-right: 0.3rem;
+        }
+
+        .detail-price small {
+            font-family: "Catamaran", sans-serif;
+            font-size: 1.5rem;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .detail-divider {
+            height: 2px;
+            background: linear-gradient(to right, #698f3f, transparent);
+            margin-bottom: 2rem;
+            border-radius: 2px;
+        }
+
+        .detail-desc {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Tags grid */
+        .detail-tags {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .detail-tag {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: #f7f9f3;
+            border: 1px solid #e0ebd0;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .tag-icon {
+            font-size: 2rem;
+        }
+
+        .detail-tag strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-tag span {
+            font-size: 1.5rem;
+            color: #698f3f;
+            font-weight: 700;
+        }
+
+        /* Weight selector */
+        .detail-weight {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .detail-weight > span {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #3a3e3b;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        .weight-btn {
+            padding: 0.9rem 2rem;
+            border: 2px solid #698f3f;
+            border-radius: 30px;
+            background: transparent;
+            color: #698f3f;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .weight-btn:hover,
+        .weight-btn.active {
+            background: #698f3f;
+            color: #fff;
+        }
+
+        /* Buttons */
+        .detail-actions {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .detail-buy-btn {
+            flex: 1;
+            text-align: center;
+            padding: 1.6rem 2rem;
+            font-size: 1.6rem;
+            border-radius: 8px;
+        }
+
+        .detail-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: transparent;
+            border: 2px solid #3a3e3b;
+            color: #3a3e3b;
+            padding: 1.4rem 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .detail-back-btn:hover {
+            background: #3a3e3b;
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .product-detail {
+                flex-direction: column;
+                margin: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+
+            .detail-img-wrap {
+                width: 100%;
+                height: 280px;
+            }
+
+            .detail-info {
+                width: 100%;
+                padding: 3rem 2.5rem;
+            }
+
+            .detail-tags {
+                grid-template-columns: 1fr;
+            }
+
+            .breadcrumb {
+                padding: 1.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+    <input type="checkbox" id="menu-check">
+    <label for="menu-check" class="nav__logo">=</label>
+    <ul class="nav__list">
+        <li class="nav__item"><a href="index.html#features" class="nav__link">Features</a></li>
+        <li class="nav__item"><a href="index.html#about" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="index.html#product" class="nav__link">Products</a></li>
+        <li class="nav__item"><a href="index.html#services" class="nav__link">Services</a></li>
+        <li class="nav__item"><a href="contact.html" class="nav__link">Contacts</a></li>
+    </ul>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <a href="index.html#product">Products</a>
+    <span>›</span>
+    Green Tea with Jasmine
+</div>
+
+<!-- PRODUCT DETAIL -->
+<div style="padding: 0 4rem 6rem; flex: 1;">
+    <div class="product-detail">
+        <!-- Image -->
+        <div class="detail-img-wrap">
+            <img src="./images/product-2.jpeg" alt="Green Tea with Jasmine" class="detail-img">
+            <span class="detail-badge">Organic</span>
+        </div>
+
+        <!-- Info -->
+        <div class="detail-info">
+            <h3 class="detail-heading-sub">Floral Harmony</h3>
+            <h1 class="detail-title">Green Tea with Jasmine</h1>
+            <p class="detail-price"><span>$</span> 4.99 <small>/ 100g</small></p>
+
+            <div class="detail-divider"></div>
+
+            <p class="detail-desc">
+                Delicately scented with fresh jasmine blossoms, this premium green tea from the
+                Fujian province of China delivers a light, floral aroma with a gentle sweetness
+                and a refreshing, clean finish that soothes the senses.
+            </p>
+
+            <div class="detail-tags">
+                <div class="detail-tag">
+                    <span class="tag-icon">🌿</span>
+                    <div>
+                        <strong>Origin</strong>
+                        <span>Fujian, China</span>
+                    </div>
+                </div>
+                <div class="detail-tag">
+                    <span class="tag-icon">🌸</span>
+                    <div>
+                        <strong>Flavor Notes</strong>
+                        <span>Floral, Sweet, Fresh</span>
+                    </div>
+                </div>
+                <div class="detail-tag">
+                    <span class="tag-icon">⏱</span>
+                    <div>
+                        <strong>Brew Time</strong>
+                        <span>2 – 3 minutes</span>
+                    </div>
+                </div>
+                <div class="detail-tag">
+                    <span class="tag-icon">🌡</span>
+                    <div>
+                        <strong>Temperature</strong>
+                        <span>70°C – 80°C</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-weight">
+                <span>Weight:</span>
+                <button class="weight-btn active" id="w100">100g</button>
+                <button class="weight-btn" id="w250">250g</button>
+                <button class="weight-btn" id="w500">500g</button>
+            </div>
+
+            <div class="detail-actions">
+                <a href="index.html#product" class="detail-back-btn">← Back</a>
+                <a href="#" class="btn detail-buy-btn">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3 class="heading_first" style="font-size: 2.5rem; margin-bottom: 10px;">Tea Station</h3>
+            <p class="footer-text">Trải nghiệm những hương vị trà tinh tế nhất được chọn lọc kỹ càng từ các nông
+                trại trứ danh, mang đến cho bạn cảm giác thư giãn tuyệt đối.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-heading">Khám Phá</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="index.html#about">Về Chúng Tôi</a></li>
+                <li><a href="index.html#product">Sản Phẩm</a></li>
+                <li><a href="index.html#services">Dịch Vụ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-heading">Giờ Mở Cửa</h4>
+            <p class="footer-text">Thứ 2 - Thứ 6: 08:00 - 22:00</p>
+            <p class="footer-text">Thứ 7 - CN: 09:00 - 23:00</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Tea Station. Bài tập Xây dựng trang web FPT Polytechnic.</p>
+    </div>
+</footer>
+
+<script>
+    // Weight button toggle
+    document.querySelectorAll('.weight-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.weight-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>

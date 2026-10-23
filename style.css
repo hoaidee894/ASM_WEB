@@ -1,0 +1,911 @@
+@import url("https://fonts.googleapis.com/css?family=Catamaran:400,700|Grand+Hotel");
+
+/* =========================================
+   1. CÀI ĐẶT CƠ BẢN & TYPOGRAPHY
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.6%;
+    /* Ép font gốc để dùng chuẩn đơn vị rem */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Catamaran", sans-serif;
+    background-color: #ffffff;
+    color: #3a3e3b;
+}
+
+.section-padding {
+    padding: 8rem 4rem;
+}
+
+/* =========================================
+   2. MENU ĐIỀU HƯỚNG
+   ========================================= */
+.nav {
+    background-color: #e5e5e5;
+    text-align: center;
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav__logo {
+    
+    font-family: "Grand Hotel", cursive;
+    font-size: 3rem;
+    color: #698f3f;
+    display: none;
+    z-index: 1000;
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    
+}
+
+.nav__link:link,
+.nav__link:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #3a3e3b;
+    /* Hàm calc() tính toán khoảng cách chữ */
+    letter-spacing: calc(0.7rem - 0.4rem);
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+    color: #698f3f;
+}
+
+/* =========================================
+   3. BANNER SLIDESHOW (Y2)
+   ========================================= */
+.header.slideshow {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: block; /* slides stack inside */
+}
+
+/* Mỗi slide chiếm toàn bộ không gian */
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.9s ease, transform 0.9s ease;
+    transform: scale(1.03);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    z-index: 1;
+    /* Giữ position: absolute — header cung cấp min-height */
+}
+
+/* Hiệu ứng trượt chữ khi slide có class active */
+.slide.active .header-content {
+    animation: slideUpFade 1s ease-out;
+}
+
+@keyframes slideUpFade {
+    0% {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ---- Nút mũi tên ---- */
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    font-size: 2.4rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, transform 0.3s;
+    backdrop-filter: blur(4px);
+}
+.slide-btn:hover {
+    background: #698f3f;
+    border-color: #698f3f;
+    transform: translateY(-50%) scale(1.1);
+}
+.slide-btn--prev { left: 3rem; }
+.slide-btn--next { right: 3rem; }
+
+/* ---- Dots ---- */
+.slide-dots {
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+.dot {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.dot.active {
+    background: #698f3f;
+    border-color: #698f3f;
+    transform: scale(1.4);
+}
+.dot:hover {
+    background: #beed8c;
+}
+
+/* ---- Thanh tiến trình ---- */
+.slide-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    z-index: 10;
+}
+.slide-progress {
+    height: 100%;
+    width: 0%;
+    background: #698f3f;
+    border-radius: 0 2px 2px 0;
+}
+
+.header h2 {
+    font-family: "Grand Hotel", cursive;
+    font-size: 4rem;
+    color: #beed8c;
+    letter-spacing: calc(0.7rem * 1.2);
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 7rem;
+    letter-spacing: 0.8rem;
+    margin-bottom: 4rem;
+}
+
+/* =========================================
+   4. NÚT BẤM (BUTTONS & HOVER)
+   ========================================= */
+.btn {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: calc(0.7rem - 0.5rem);
+    background-color: #698f3f;
+    color: #3a3e3b;
+    padding: 1.2rem 2.5rem;
+    outline: 3px solid #698f3f;
+    /* Kỹ thuật viền ngoài (Box Model) */
+    outline-offset: 4px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4b6630;
+    outline-color: #4b6630;
+    outline-width: 5px;
+    color: #fff;
+    transform: scale(1.05);
+    /* Yêu cầu Transform phóng to */
+}
+
+/* =========================================
+   5. BỐ CỤC CHUNG BẰNG FLEXBOX (Y3)
+   ========================================= */
+#features {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f7f7f7;
+    gap: 2rem;
+}
+
+#about,
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    background-color: #fff;
+}
+
+.contact {
+    background-color: #f1f5f8;
+}
+
+#product {
+    background-color: #3a3e3b;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+/* Các cột chia tỷ lệ */
+.feature_item {
+    width: 25%;
+    text-align: center;
+    padding: 2rem;
+    transition: transform 0.3s;
+    cursor: pointer;
+    border: 1px solid red;
+}
+
+.feature_item:hover {
+    transform: translateY(-10px);
+    background-color: #698f3f;
+    color: white;
+    border-color: #698f3f;
+}
+
+.feature_item:hover .feature__title,
+.feature_item:hover .feature__text {
+    color: white;
+}
+
+.about_left,
+.about_right,
+.contact-info,
+.contact-form {
+    width: 50%;
+}
+
+.product_item {
+    width: 33.33%;
+    text-align: center;
+    padding: 3rem 2rem;
+    border-bottom: 5px solid #698f3f;
+}
+
+.product-intro {
+    text-align: left;
+    border: none;
+}
+
+/* Ép các thẻ Product Card nằm dọc và đẩy nút bấm thẳng hàng */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.card-btn {
+    margin-top: auto;
+    /* Đẩy nút mua hàng xuống sát đáy thẻ */
+}
+
+/* =========================================
+   6. CHI TIẾT CÁC THÀNH PHẦN BÊN TRONG
+   ========================================= */
+.heading_first {
+    font-family: "Grand Hotel", cursive;
+    font-size: 3.5rem;
+    color: #698f3f;
+    margin-bottom: 1rem;
+}
+
+.heading_second {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    color: #3a3e3b;
+    margin-bottom: 2rem;
+}
+
+.heading_second--white,
+.products__text,
+.product-item__title {
+    color: #fff;
+}
+
+.feature__title {
+    font-size: 1.8rem;
+    color: #698f3f;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    letter-spacing: calc(0.7rem - 0.2rem);
+}
+
+.feature__text {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #777;
+}
+
+.about_left {
+    border: 7px solid #698f3f;
+    border-radius: 22px;
+    background-color: #698f3f;
+    overflow: hidden;
+}
+
+.about_left img {
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+}
+
+.about__text {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.product__img {
+    border-radius: 22px;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}
+
+.product-item__title {
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: calc(0.7rem - 0.3rem);
+    margin-bottom: 1rem;
+}
+
+.product-item__price {
+    font-family: "Grand Hotel", cursive;
+    font-size: 2.6rem;
+    color: #698f3f;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.product-item__price span {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-right: 0.5rem;
+}
+
+/* Form liên hệ */
+.contact-form {
+    background: #fff;
+    padding: 4rem;
+    text-align: center;
+}
+
+.form-control {
+    width: 100%;
+    background: #f1f5f8;
+    text-transform: uppercase;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: none;
+    letter-spacing: 0.7rem;
+}
+
+.form-control::placeholder {
+    font-family: "Catamaran", sans-serif;
+    color: #102a42;
+    text-transform: uppercase;
+    letter-spacing: 0.7rem;
+}
+
+.submit-btn {
+    width: 100%;
+}
+
+/* Dịch vụ (Services - Bố cục Card) */
+.services-section {
+    background-color: #e5e5e5;
+    text-align: center;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.service-card {
+    width: 33.33%;
+    background: #698f3f;
+    border: 3px solid #698f3f;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-img-container {
+    height: 250px;
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-info {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.service-name {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-read-more {
+    background: #fff;
+    color: #3a3e3b;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: auto;
+    /* Căn thẳng hàng nút bấm */
+}
+
+/* =========================================
+   7. FOOTER MỞ RỘNG
+   ========================================= */
+footer {
+    background-color: #2f3542;
+    color: #f1f5f8;
+    padding: 6rem 4rem 2rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4rem;
+    border-bottom: 1px solid #57606f;
+    padding-bottom: 4rem;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-heading {
+    color: #698f3f;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+.footer-text {
+    font-size: 1.6rem;
+    color: #ced6e0;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 1.2rem;
+}
+
+.footer-links a {
+    color: #ced6e0;
+    text-decoration: none;
+    font-size: 1.6rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #beed8c;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 1.4rem;
+    color: #a4b0be;
+}
+
+
+/* Nút menu trên máy tính: ẩn đi */
+.nav__logo {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 3rem;
+    color: #698f3f;
+    cursor: pointer;
+}
+
+
+/* Ẩn checkbox */
+#menu-check {
+    display: none;
+}
+
+/* Mặc định ẩn nút menu trên máy tính */
+.nav__logo {
+    display: none;
+    font-size: 3rem;
+    color: #698f3f;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Màn hình nhỏ */
+@media screen and (max-width: 900px) {
+    
+
+    /* Hiện nút = */
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+    .nav__logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* Ẩn danh sách lúc đầu */
+    .nav__list {
+        display: none;
+        position: absolute;
+        top: 80%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        width: 200px;
+        padding: 1rem;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+    }
+
+    /* Bấm = thì hiện danh sách */
+    #menu-check:checked ~ .nav__list {
+        display: flex;
+    }
+
+    .nav__item {
+        width: 100%;
+    }
+
+    .nav__link {
+        display: block;
+        padding: 1rem;
+    }
+}
+
+/* =========================================
+   8. PRODUCT DETAIL MODAL
+   ========================================= */
+
+/* Overlay nền mờ */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: fadeInOverlay 0.3s ease;
+}
+
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Hộp modal */
+.modal-box {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 860px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    animation: slideUpModal 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUpModal {
+    from { transform: translateY(60px) scale(0.95); opacity: 0; }
+    to   { transform: translateY(0) scale(1);       opacity: 1; }
+}
+
+/* Nút đóng */
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #3a3e3b;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 3.6rem;
+    height: 3.6rem;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s, transform 0.2s;
+}
+.modal-close:hover {
+    background: #698f3f;
+    transform: rotate(90deg);
+}
+
+/* Bố cục 2 cột bên trong modal */
+.modal-content {
+    display: flex;
+    min-height: 450px;
+}
+
+/* Cột ảnh */
+.modal-img-wrap {
+    width: 45%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.modal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px 0 0 20px;
+    display: block;
+}
+
+.modal-badge {
+    position: absolute;
+    top: 1.8rem;
+    left: 1.8rem;
+    background: #e74c3c;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+}
+
+/* Cột thông tin */
+.modal-info {
+    width: 55%;
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-heading-sub {
+    font-family: "Grand Hotel", cursive;
+    font-size: 2.2rem;
+    color: #698f3f;
+    margin-bottom: 0.5rem;
+}
+
+.modal-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #3a3e3b;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.modal-price {
+    font-family: "Grand Hotel", cursive;
+    font-size: 3.2rem;
+    color: #698f3f;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.modal-price span {
+    font-size: 2.4rem;
+    margin-right: 0.3rem;
+}
+
+.modal-price small {
+    font-family: "Catamaran", sans-serif;
+    font-size: 1.4rem;
+    color: #999;
+    font-weight: 400;
+}
+
+.modal-divider {
+    height: 2px;
+    background: linear-gradient(to right, #698f3f, transparent);
+    margin-bottom: 1.8rem;
+    border-radius: 2px;
+}
+
+.modal-desc {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 2.5rem;
+}
+
+/* Tags thông tin */
+.modal-tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.modal-tag {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #f7f9f4;
+    border: 1px solid #e0ecd4;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+}
+
+.tag-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.modal-tag div {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-tag strong {
+    font-size: 1.1rem;
+    color: #3a3e3b;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.modal-tag span {
+    font-size: 1.3rem;
+    color: #698f3f;
+    font-weight: 600;
+}
+
+/* Chọn trọng lượng */
+.modal-weight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.modal-weight > span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3a3e3b;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.weight-btn {
+    padding: 0.7rem 1.8rem;
+    border: 2px solid #698f3f;
+    border-radius: 30px;
+    background: transparent;
+    color: #698f3f;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: "Catamaran", sans-serif;
+}
+
+.weight-btn:hover,
+.weight-btn.active {
+    background: #698f3f;
+    color: #fff;
+}
+
+/* Nút mua trong modal */
+.modal-buy-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+/* Responsive modal */
+@media screen and (max-width: 700px) {
+    .modal-content {
+        flex-direction: column;
+    }
+    .modal-img-wrap {
+        width: 100%;
+        height: 250px;
+    }
+    .modal-img {
+        border-radius: 20px 20px 0 0;
+    }
+    .modal-info {
+        width: 100%;
+        padding: 2.5rem 2rem;
+    }
+    .modal-tags {
+        grid-template-columns: 1fr;
+    }
+}
